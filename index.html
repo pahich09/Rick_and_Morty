@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rick and Morty</title>
+</head>
+
+<body>
+    <h1>Rick and Morty API</h1>
+    <form action="#">
+        <fieldset>
+            <legend>Gender</legend>
+            <label>
+                <input type="radio" value='All' name='Gender' checked> All
+            </label>
+            <label>
+                <input type="radio" value='Male' name="Gender"> Male
+            </label>
+            <label>
+                <input type="radio" value='Female' name="Gender"> Female
+            </label>
+            <label>
+                <input type="radio" value='unknown' name="Gender"> Unknown
+            </label>
+            <label>
+                <input type="radio" value='Genderless' name="Gender"> Genderless
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Status</legend>
+            <label>
+                <input type="radio" value='All' name='Status' checked> All
+            </label>
+            <label>
+                <input type="radio" value='Alive' name="Status"> Alive
+            </label>
+            <label>
+                <input type="radio" value='Dead' name="Status"> Dead
+            </label>
+            <label>
+                <input type="radio" value='unknown' name="Status"> Unknown
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Species</legend>
+            <label>
+                <input type="radio" value='All' name='Species' checked> All
+            </label>
+            <label>
+                <input type="radio" value='Human' name="Species"> Human
+            </label>
+            <label>
+                <input type="radio" value='Alien' name="Species"> Alien
+            </label>
+            <label>
+                <input type="radio" value='Humanoid' name="Species"> Humanoid
+            </label>
+            <label>
+                <input type="radio" value='unknown' name="Species"> Unknown
+            </label>
+            <label>
+                <input type="radio" value='Disease' name="Species"> Disease
+            </label>
+            <label>
+                <input type="radio" value='Robot' name="Species"> Robot
+            </label>
+            <br>
+            <label>
+                <input type="radio" value='Vampire' name="Species"> Vampire
+            </label>
+            <label>
+                <input type="radio" value='Mytholog' name="Species"> Mytholog
+            </label>
+            <label>
+                <input type="radio" value='Animal' name="Species"> Animal
+            </label>
+            <label>
+                <input type="radio" value='Poopybutthole' name="Species"> Poopybutthole
+            </label>
+            <label>
+                <input type="radio" value='Cronenberg' name="Species"> Cronenberg
+            </label>
+            <label>
+                <input type="radio" value='Parasite' name="Species"> Parasite
+            </label>
+        </fieldset>
+
+        <br>
+        <button type="button" id='btn-1'>Push</button>
+        <button type="reset" id='reset' style="margin-left: 50px;">Reset</button>
+        <br>
+        <div class="out" style="margin-top: 20px;"></div>
+    </form>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
