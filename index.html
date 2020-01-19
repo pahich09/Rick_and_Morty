@@ -6,96 +6,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rick and Morty</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-    <h1>Rick and Morty API</h1>
-    <form action="#">
-        <fieldset>
-            <legend>Gender</legend>
-            <label>
-                <input type="radio" value='All' name='Gender' checked> All
-            </label>
-            <label>
-                <input type="radio" value='Male' name="Gender"> Male
-            </label>
-            <label>
-                <input type="radio" value='Female' name="Gender"> Female
-            </label>
-            <label>
-                <input type="radio" value='unknown' name="Gender"> Unknown
-            </label>
-            <label>
-                <input type="radio" value='Genderless' name="Gender"> Genderless
-            </label>
-        </fieldset>
+    <div class="container">
 
-        <fieldset>
-            <legend>Status</legend>
-            <label>
-                <input type="radio" value='All' name='Status' checked> All
-            </label>
-            <label>
-                <input type="radio" value='Alive' name="Status"> Alive
-            </label>
-            <label>
-                <input type="radio" value='Dead' name="Status"> Dead
-            </label>
-            <label>
-                <input type="radio" value='unknown' name="Status"> Unknown
-            </label>
-        </fieldset>
+        <div class="row">
+            <div class="col-12">
+                <h1>Rick and Morty API</h1>
 
-        <fieldset>
-            <legend>Species</legend>
-            <label>
-                <input type="radio" value='All' name='Species' checked> All
-            </label>
-            <label>
-                <input type="radio" value='Human' name="Species"> Human
-            </label>
-            <label>
-                <input type="radio" value='Alien' name="Species"> Alien
-            </label>
-            <label>
-                <input type="radio" value='Humanoid' name="Species"> Humanoid
-            </label>
-            <label>
-                <input type="radio" value='unknown' name="Species"> Unknown
-            </label>
-            <label>
-                <input type="radio" value='Disease' name="Species"> Disease
-            </label>
-            <label>
-                <input type="radio" value='Robot' name="Species"> Robot
-            </label>
-            <br>
-            <label>
-                <input type="radio" value='Vampire' name="Species"> Vampire
-            </label>
-            <label>
-                <input type="radio" value='Mytholog' name="Species"> Mytholog
-            </label>
-            <label>
-                <input type="radio" value='Animal' name="Species"> Animal
-            </label>
-            <label>
-                <input type="radio" value='Poopybutthole' name="Species"> Poopybutthole
-            </label>
-            <label>
-                <input type="radio" value='Cronenberg' name="Species"> Cronenberg
-            </label>
-            <label>
-                <input type="radio" value='Parasite' name="Species"> Parasite
-            </label>
-        </fieldset>
+                <div class="form-group">
+                    <label for="gender">Select gender</label>
+                    <select class="form-control" id="gender">
+                        <option value='All'>All</option>
+                        <option value='Male'>Male</option>
+                        <option value='Female'>Female</option>
+                        <option value='unknown'>unknown</option>
+                        <option value='Genderless'>Genderless</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Status">Select Status</label>
+                    <select class="form-control" id="status">
+                        <option value='All'>All</option>
+                        <option value='Alive'>Alive</option>
+                        <option value='Dead'>Dead</option>
+                        <option value='unknown'>unknown</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Species">Select Species</label>
+                    <select class="form-control" id="species">
+                        <option value='All'>All</option>
+                        <option value='Human'>Human</option>
+                        <option value='Alien'>Alien</option>
+                        <option value='Humanoid'>Humanoid</option>
+                        <option value='unknown'>unknown</option>
+                        <option value='Disease'>Disease</option>
+                        <option value='Robot'>Robot</option>
+                        <option value='Vampire'>Vampire</option>
+                        <option value='Mytholog'>Mytholog</option>
+                        <option value='Animal'>Animal</option>
+                        <option value='Poopybutthole'>Poopybutthole</option>
+                        <option value='Cronenberg'>Cronenberg</option>
+                        <option value='Parasite'>Parasite</option>
+                    </select>
+                </div>
 
-        <br>
-        <button type="button" id='btn-1'>Push</button>
-        <button type="reset" id='reset' style="margin-left: 50px;">Reset</button>
-        <br>
-        <div class="out" style="margin-top: 20px;"></div>
-    </form>
+            </div>
+            <div class="col-12" style='margin-bottom: 20px;'>
+                <button type="button" class="btn btn-primary" id='btn-1'>Push</button>
+                <button type='reset' class="btn btn-danger">Reset</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12" id='app'></div>
+        </div>
+    </div>
+
+
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/app.js"></script>

@@ -1,24 +1,25 @@
-let radio = document.querySelectorAll('input[type=radio]');
-let reset = document.querySelector('#reset');
-let out = document.querySelector('.out');
+const reset = document.querySelector('button[type=reset]');
+const btn = document.getElementById('btn-1');
+const columns = ['id', 'name', 'gender', 'status', 'species'];
+const objSort = new Object;
 
-document.getElementById('btn-1').onclick = () => {
-    let gend, stat, spec;
-    radio.forEach(el => {
-        if (el.checked) {
-            switch (el.name) {
-                case 'Gender':
-                    gend = el.value;
-                    break;
-                case 'Status':
-                    stat = el.value;
-                    break;
-                case 'Species':
-                    spec = el.value;
-                    break;
-            }
-        }
-    })
+const createObjSort = () => {
+    document.querySelectorAll('#gender>option').forEach(el => el.selected ? objSort.gender = el.value : null);
+    document.querySelectorAll('#status>option').forEach(el => el.selected ? objSort.status = el.value : null);
+    document.querySelectorAll('#species>option').forEach(el => el.selected ? objSort.species = el.value : null);
+}
+
+const createHTMLNode = (tag, attrs, inner) => {
+    const element = document.createElement(tag);
+    attrs.forEach(attr => { element.setAttribute(attr.name, attr.value.join(' ')) });
+    inner ? element.innerHTML = inner : null;
+    return element;
+}
+
+btn.onclick = () => {
+    btn.disabled = true;
+    reset.disabled = false;
+    createObjSort();
     fetch('https://rickandmortyapi.com/api/character/')
         .then(res => res.json())
         .then(res => {
@@ -31,27 +32,35 @@ document.getElementById('btn-1').onclick = () => {
                     let dataArr = res.map(el => el.data.results);
                     let allCharArray = [];
                     dataArr.map(item => item.map(el => allCharArray.push(el)));
-                    // for (let k = 0; k < dataArr.length; k++) {
-                    //     for (let j = 0; j < dataArr[k].length; j++) {
-                    //         allCharArray.push(dataArr[k][j]);
-                    //     }
-                    // }
                     let resArr = [];
                     allCharArray.forEach(el => {
-                        if ((gend == 'All' ? true : el.gender == gend)
-                            && (stat == 'All' ? true : el.status == stat)
-                            && (spec == 'All' ? true : el.species == spec)) {
+                        if ((objSort.gender == 'All' ? true : el.gender == objSort.gender)
+                            && (objSort.status == 'All' ? true : el.status == objSort.status)
+                            && (objSort.species == 'All' ? true : el.species == objSort.species)) {
                             resArr.push(el)
                         }
                     })
-                    console.log(resArr);
+                    const table = createHTMLNode('table', [{ name: 'class', value: ['table', 'table-striped'] }], null);
+                    const thead = createHTMLNode('thead', [], null);
+                    const tr = createHTMLNode('tr', [], null);
+                    const tbody = createHTMLNode('tbody', [], null);
 
-                    let outRes = `Найдено персонажей - ${resArr.length}<br><br>`;
-                    reset.onclick = () => out.innerHTML = '';
-                    resArr.forEach((el, i) => {
-                        outRes += `${i + 1}. ${el.name} <br>`
-                    })
-                    out.innerHTML = outRes;
+                    columns.forEach(el => tr.append(createHTMLNode('th', [{ name: 'class', value: ['text-uppercase'] }], el)));
+                    document.getElementById('app').append(table);
+                    table.append(thead);
+                    thead.append(tr);
+                    table.append(tbody);
+
+                    resArr.forEach(el => {
+                        const trBody = createHTMLNode('tr', [], null);
+                        tbody.append(trBody);
+                        columns.forEach(item => trBody.append(createHTMLNode('td', [], (el[item]))))
+                    });
+                    reset.onclick = () => {
+                        table.remove();
+                        btn.disabled = false;
+                        reset.disabled = true;
+                    }
                 })
         });
 }
